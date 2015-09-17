@@ -67,11 +67,14 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-add-repository ppa:fish-shell/release-2
     sudo apt-get update
-    sudo apt-get install fish
-    chsh -s /usr/bin/fish
+    sudo apt-get install -y fish
     sudo apt-get install -y python-setuptools
+
+    chsh -s `which fish`
+    fish
+
     sudo easy_install pip
     sudo pip install virtualenv
-    sudo pip install virtualenvwrapper
+    virtualenv /Residuals/venv --no-site-packages
   SHELL
 end
