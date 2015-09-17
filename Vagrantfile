@@ -69,6 +69,7 @@ Vagrant.configure(2) do |config|
     sudo apt-get update
     sudo apt-get install -y fish
     sudo apt-get install -y python-setuptools
+    sudo apt-get install -y mysql-server
 
     chsh -s `which fish`
 
