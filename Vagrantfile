@@ -69,7 +69,15 @@ Vagrant.configure(2) do |config|
     sudo apt-get update
     sudo apt-get install -y fish
     sudo apt-get install -y python-setuptools
-    sudo apt-get install -y mysql-server
+
+
+    # node
+    curl -sL https://deb.nodesource.com/setup | sudo bash -
+    sudo apt-get install -y nodejs
+    sudo apt-get install -y build-essential
+
+    npm install -g ember-cli
+    npm install -g phantomjs2
 
     chsh -s `which fish`
 
