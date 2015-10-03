@@ -12,10 +12,10 @@
         {% endfor %}
         {% block body %}{% endblock %}
     </div>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/underscore.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/backbone.js') }}"></script>
 
-    <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script
+        data-main="{{ url_for('static', filename='js/main.js') }}"
+        src="{{ url_for('static', filename='js/vendor/require.js') }}"
+    ></script>
 </body>
 </html>
