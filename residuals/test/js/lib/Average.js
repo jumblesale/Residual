@@ -14,6 +14,7 @@ requirejs.config({
 
 describe('it calculates averages', function() {
     var Average,
+        _,
         students = [
             {residual: 2},
             {residual: 4},
@@ -22,13 +23,14 @@ describe('it calculates averages', function() {
         ];
 
     before(function(done) {
-        requirejs(['average'], function(average) {
+        requirejs(['underscore', 'average'], function(underscore, average) {
             Average = average;
+            _       = underscore;
             done();
         });
     });
 
     it('calculates the residual average', function() {
-        assert.equal(Average.averageResidual(students), 7.5);
+        assert.equal(Average.averageResidual(_.chain(students)), 7.5);
     });
 });
