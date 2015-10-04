@@ -19,10 +19,11 @@ function(Backbone, StudentCollection) {
 
         render: function() {
             collection = this.collection;
-            console.log(collection.getAverageResidual());
 
             this.$el.html(this.template({
-                averageResidual: collection.getAverageResidual()
+                averageResidual: collection
+                    .getAverageResidual()
+                    .toPrecision(3)
             }));
 
             return this;

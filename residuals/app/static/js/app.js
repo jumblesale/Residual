@@ -11,7 +11,7 @@ define([
     return {
         init: function() {
             var student1 = new StudentModel({
-                name:      'charles',
+                name:      'bob loblaw',
                 potential: 'a',
                 actual:    'b'
             }),
@@ -38,7 +38,7 @@ define([
             statsView.render();
 
             collection.add(new StudentModel({
-                name:      'pop pop',
+                name:      'loose seal',
                 potential: 'e',
                 actual:    'c'
             }));

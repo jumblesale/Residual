@@ -33,9 +33,24 @@
 
     <script type="text/template" id="template-student-form-add">
         <form>
-            <input type="text" name="name" />
-            <input type="text" name="potential" />
-            <input type="text" name="actual" />
+            <input type="text" name="name" placeholder="Student name" />
+            <select name="potential">
+                <option value="a*">A*</option>
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+                <option value="d">D</option>
+                <option value="e">E</option>
+            </select>
+            <select name="actual">
+                <option value="a*">A*</option>
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+                <option value="d">D</option>
+                <option value="e">E</option>
+                <option value="u">U</option>
+            </select>
             <input type="submit" value="Create" id="student-create-submit" />
         </form>
     </script>
