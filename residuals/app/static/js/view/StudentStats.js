@@ -22,11 +22,22 @@ function(Backbone, StudentCollection) {
 
             this.$el.html(this.template({
                 averageResidual: collection
-                    .getAverageResidual()
-                    .toPrecision(3),
+                    .getAverageResidual(),
+
                 averagePupilPremiumResidual: collection
-                    .getAveragePupilPremiumResidual()
-                    .toPrecision(3)
+                    .getAveragePupilPremiumResidual(),
+
+                averageGiftedTalentedResidual: collection
+                    .getAverageGiftedTalentedResidual(),
+
+                averageSENResidual: collection
+                    .getAverageSENResidual(),
+
+                averageBMEResidual: collection
+                    .getAverageBMEResidual(),
+
+                averageFSMResidual: collection
+                    .getAverageFSMResidual(),
             }));
 
             return this;

@@ -15,7 +15,7 @@ define([
         var total,
             eligible = students
                 .filter(function(student) {return true === student.attributes[field]});
-        
+
         total = eligible
             .map(function(student) {return student.attributes.residual})
             .reduce(function(memo, residual) {

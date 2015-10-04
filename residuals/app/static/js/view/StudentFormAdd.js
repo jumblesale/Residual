@@ -16,7 +16,6 @@ function(Backbone, StudentModelFactory) {
                         var value = item.value;
                         // for checkboxes, you see
                         if('true' === value) { value = true; }
-                        if('false' === value) { value = false; }
                         params[item.name] = value;
                     });
 
