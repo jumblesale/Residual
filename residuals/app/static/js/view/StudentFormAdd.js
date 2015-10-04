@@ -8,6 +8,7 @@ function(Backbone, StudentModelFactory) {
             $el        = this.$el;
             collection = this.collection;
             $el.on('submit', function(e) {
+                e.preventDefault();
                 params = {}
                 _
                     .chain($el.find('form').serializeArray())
@@ -18,8 +19,6 @@ function(Backbone, StudentModelFactory) {
                 console.log(model);
 
                 collection.add(model);
-
-                return false;
             });
         },
 

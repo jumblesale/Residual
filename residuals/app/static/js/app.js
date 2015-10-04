@@ -6,7 +6,8 @@ define([
     'collection/Student',
     'view/StudentList',
     'view/StudentFormAdd',
-], function(_, Backbone, Average, StudentModel, StudentCollection, StudentListView, StudentFormAdd) {
+    'view/StudentStats',
+], function(_, Backbone, Average, StudentModel, StudentCollection, StudentListView, StudentFormAdd, StudentStatsView) {
     return {
         init: function() {
             var student1 = new StudentModel({
@@ -26,21 +27,21 @@ define([
             }),
             collection = new StudentCollection([student1, student2, student3]);
 
-            console.log(collection.toJSON());
-
             var view = new StudentListView({collection: collection});
+
+            var form = new StudentFormAdd({collection: collection});
+
+            form.render();
+
+            statsView = new StudentStatsView({collection: collection});
+
+            statsView.render();
 
             collection.add(new StudentModel({
                 name:      'pop pop',
                 potential: 'e',
                 actual:    'c'
             }));
-
-            var form = new StudentFormAdd({collection: collection});
-
-            form.render();
-
-            view.$el.after(form.$el.html());
         }
     }
 });

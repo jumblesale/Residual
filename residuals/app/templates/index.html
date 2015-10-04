@@ -19,9 +19,10 @@
         </tbody>
     </table>
     <div id="student-form-add"></div>
+    <div id="student-stats"></div>
 
     <!-- templates -->
-    <script type="text/template" id="template-student-row-template">
+    <script type="text/template" id="template-student-row">
         <tr>
             <td><%- name %></td>
             <td><%- potential %></td>
@@ -37,6 +38,10 @@
             <input type="text" name="actual" />
             <input type="submit" value="Create" id="student-create-submit" />
         </form>
+    </script>
+
+    <script type="text/template" id="template-student-stats">
+        residual: <%- averageResidual %>
     </script>
 
     <!-- this HAS to be last -->
