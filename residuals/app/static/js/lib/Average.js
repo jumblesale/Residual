@@ -9,7 +9,6 @@ define([
             .reduce(function(memo, residual) {
                 return memo + residual;
             }, 0) / students.size();
-
     };
 
     return {

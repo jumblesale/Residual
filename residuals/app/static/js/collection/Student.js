@@ -1,11 +1,14 @@
 define([
     'underscore',
     'backbone',
-    'model/Student'
-], function(_, Backbone, StudentModel) {
-    var StudentCollection = Backbone.Collection.extend({
-        model: StudentModel
-    });
+    'model/Student',
+    'average'
+], function(_, Backbone, StudentModel, Average) {
+    return StudentCollection = Backbone.Collection.extend({
+        model: StudentModel,
 
-    return StudentCollection;
+        getAverageResidual: function() {
+            return Average.averageResidual(this);
+        }
+    });
 });
