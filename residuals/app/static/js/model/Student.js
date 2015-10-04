@@ -12,8 +12,8 @@ define([
         },
 
         initialize: function(options) {
-            var potential = options.potential,
-                actual    = options.actual;
+            var potential = this.attributes.potential,
+                actual    = this.attributes.actual;
 
             this.attributes.residual  = Residual.calculateResidual(
                 potential, actual

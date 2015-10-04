@@ -2,7 +2,7 @@ define(['backbone'],
 function(Backbone) {
     return Backbone.View.extend({
         tagName: "tr",
-        template: _.template($("#student-row-template").html()),
+        template: _.template($("#template-student-row-template").html()),
 
         events: {
             "click": "clicked"

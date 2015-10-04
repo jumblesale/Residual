@@ -2,19 +2,41 @@
 <html>
 <head>
     <title>Residuals</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <table id="students">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Potential grade</th>
+                <th>Actual grade</th>
+                <th>Residual</th>
+            </tr>
+        </thead>
+        <tbody id="students-table-body">
 
+        </tbody>
     </table>
+    <div id="student-form-add"></div>
 
-    <script type="text/template" id="student-row-template">
+    <!-- templates -->
+    <script type="text/template" id="template-student-row-template">
         <tr>
             <td><%- name %></td>
             <td><%- potential %></td>
             <td><%- actual %></td>
-            <td><%- residual %></td>
+            <td><%  residual > 0 ? print('+' + residual) : print(residual) %></td>
         </tr>
+    </script>
+
+    <script type="text/template" id="template-student-form-add">
+        <form>
+            <input type="text" name="name" />
+            <input type="text" name="potential" />
+            <input type="text" name="actual" />
+            <input type="submit" value="Create" id="student-create-submit" />
+        </form>
     </script>
 
     <!-- this HAS to be last -->
