@@ -17,7 +17,14 @@ function(Backbone) {
                 this.template(
                     _.extend(
                         this.model.attributes,
-                        {cid: this.model.cid}
+                        {
+                            cid: this.model.cid,
+                            residualCellClass: function(residual) {
+                                if(residual < 0) {return 'danger';}
+                                if(residual > 0) {return 'success';}
+                                return 'warning';
+                            }(this.model.get('residual'))
+                        }
                     )
                 )
             );

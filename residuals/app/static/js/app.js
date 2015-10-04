@@ -31,7 +31,7 @@ define([
             }),
             student3 = new StudentModel({
                 name:      'gob',
-                potential: 'a*',
+                potential: 'a',
                 actual:    'a',
                 pp:        true,
                 gt:        false,
