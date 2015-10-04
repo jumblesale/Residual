@@ -9,6 +9,11 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Pupil premium?</th>
+                <th>Gifted/talented?</th>
+                <th>SEN?</th>
+                <th>BME?</th>
+                <th>FSM?</th>
                 <th>Potential grade</th>
                 <th>Actual grade</th>
                 <th>Residual</th>
@@ -25,6 +30,11 @@
     <script type="text/template" id="template-student-row">
         <tr data-cid="<%- cid %>">
             <td><%- name %></td>
+            <td><input type="checkbox" disabled="disabled" <% if(true === pp) { print('checked="checked"'); } %> /></td>
+            <td><input type="checkbox" disabled="disabled" <% if(true === gt) { print('checked="checked"'); } %> /></td>
+            <td><input type="checkbox" disabled="disabled" <% if(true === sen) { print('checked="checked"'); } %> /></td>
+            <td><input type="checkbox" disabled="disabled" <% if(true === bme) { print('checked="checked"'); } %> /></td>
+            <td><input type="checkbox" disabled="disabled" <% if(true === fsm) { print('checked="checked"'); } %> /></td>
             <td><%- potential %></td>
             <td><%- actual %></td>
             <td><%  residual > 0 ? print('+' + residual) : print(residual) %></td>
@@ -51,6 +61,11 @@
                 <option value="e">E</option>
                 <option value="u">U</option>
             </select>
+            <input type="checkbox" name="pupilPremium" value="true">Pupil premium?
+            <input type="checkbox" name="giftedTalented" value="true">Gifted / talented?
+            <input type="checkbox" name="sen" value="true">SEN?
+            <input type="checkbox" name="bme" value="true">BME?
+            <input type="checkbox" name="freeSchoolMeals" value="true">FSM?
             <input type="submit" value="Create" id="student-create-submit" />
         </form>
     </script>

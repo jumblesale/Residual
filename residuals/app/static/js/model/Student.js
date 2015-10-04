@@ -8,10 +8,15 @@ define([
             name:      '',
             potential: '',
             actual:    '',
+            pp:        false,
+            gt:        false,
+            sen:       false,
+            bme:       false,
+            fsm:       false,
             residual:  0
         },
 
-        initialize: function(options) {
+        initialize: function() {
             var potential = this.attributes.potential,
                 actual    = this.attributes.actual;
 

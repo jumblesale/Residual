@@ -16,8 +16,6 @@ function(Backbone, StudentModelFactory) {
 
                 model = StudentModelFactory.createFromArray(params);
 
-                console.log(model);
-
                 collection.add(model);
             });
         },
