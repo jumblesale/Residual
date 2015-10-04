@@ -14,7 +14,12 @@ function(Backbone) {
 
         render: function() {
             this.$el.html(
-                this.template(this.model.attributes)
+                this.template(
+                    _.extend(
+                        this.model.attributes,
+                        {cid: this.model.cid}
+                    )
+                )
             );
         }
     });
