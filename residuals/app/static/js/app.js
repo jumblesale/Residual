@@ -4,43 +4,31 @@ define([
     'average',
     'model/Student',
     'collection/Student',
-    'view/StudentRow',
-], function(_, Backbone, Average, StudentModel, StudentCollection, StudentRowView) {
+    'view/StudentItem',
+], function(_, Backbone, Average, StudentModel, StudentCollection, StudentItemView) {
     return {
         init: function() {
             var student1 = new StudentModel({
                 id:        1,
+                name:      'charles',
                 potential: 'a',
                 actual:    'b'
             }),
             student2 = new StudentModel({
                 id:        2,
+                name:      'michael',
                 potential: 'c',
                 actual:    'd'
+            }),
+            student3 = new StudentModel({
+                id:        3,
+                name:      'gob',
+                potential: 'a*',
+                actual:    'a'
             }),
             collection = new StudentCollection([student1, student2]);
 
             console.log(collection.toJSON());
-
-            var StudentItemView = Backbone.View.extend({
-                tagName: "li",
-
-                events: {
-                    "click": "clicked"
-                },
-
-                clicked: function(e) {
-                    console.log(e);
-                },
-
-                render: function() {
-                    this.$el.append(
-                        _.template(
-                            '<%- potential %>'
-                        )(this.model.attributes)
-                    );
-                }
-            });
 
             var StudentListView = Backbone.View.extend({
                 el: "#students",
@@ -57,6 +45,15 @@ define([
             });
 
             var view = new StudentListView({collection: collection});
+            view.render();
+
+            collection.add(new StudentModel({
+                id:        4,
+                name:      'pop pop',
+                potential: 'e',
+                actual:    'c'
+            }));
+
             view.render();
         }
     }

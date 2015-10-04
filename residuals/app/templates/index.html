@@ -4,9 +4,20 @@
     <title>Residuals</title>
 </head>
 <body>
-    <ul id="students">
+    <table id="students">
 
-    </ul>
+    </table>
+
+    <script type="text/template" id="student-row-template">
+        <tr>
+            <td><%- name %></td>
+            <td><%- potential %></td>
+            <td><%- actual %></td>
+            <td><%- residual %></td>
+        </tr>
+    </script>
+
+    <!-- this HAS to be last -->
     <script
         data-main="{{ url_for('static', filename='js/main.js') }}"
         src="{{ url_for('static', filename='js/vendor/require.js') }}"
