@@ -16,10 +16,10 @@ describe('it calculates averages', function() {
     var Average,
         _,
         students = [
-            {residual: 2},
-            {residual: 4},
-            {residual: 8},
-            {residual: 16},
+            {residual: 2, attributes: {residual: 2, criteria: true}},
+            {residual: 4, attributes: {}},
+            {residual: 8, attributes: {residual: 8, criteria: true}},
+            {residual: 16, attributes: {}},
         ];
 
     before(function(done) {
@@ -32,5 +32,9 @@ describe('it calculates averages', function() {
 
     it('calculates the residual average', function() {
         assert.equal(Average.averageResidual(_.chain(students)), 7.5);
+    });
+
+    it('calculates the residual average on students with a criteria', function() {
+        assert.equal(Average.averageResidualByCriteria(_.chain(students), 'criteria'), 5);
     });
 });

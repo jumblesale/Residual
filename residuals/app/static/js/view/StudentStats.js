@@ -23,6 +23,9 @@ function(Backbone, StudentCollection) {
             this.$el.html(this.template({
                 averageResidual: collection
                     .getAverageResidual()
+                    .toPrecision(3),
+                averagePupilPremiumResidual: collection
+                    .getAveragePupilPremiumResidual()
                     .toPrecision(3)
             }));
 

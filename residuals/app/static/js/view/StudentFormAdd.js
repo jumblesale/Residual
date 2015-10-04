@@ -12,7 +12,13 @@ function(Backbone, StudentModelFactory) {
                 params = {}
                 _
                     .chain($el.find('form').serializeArray())
-                    .map(function(item) {params[item.name] = item.value;});
+                    .map(function(item) {
+                        var value = item.value;
+                        // for checkboxes, you see
+                        if('true' === value) { value = true; }
+                        if('false' === value) { value = false; }
+                        params[item.name] = value;
+                    });
 
                 model = StudentModelFactory.createFromArray(params);
 

@@ -13,6 +13,7 @@ function(Backbone) {
         },
 
         render: function() {
+            console.log(this.model.attributes);
             this.$el.html(
                 this.template(
                     _.extend(

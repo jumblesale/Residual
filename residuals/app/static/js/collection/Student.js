@@ -9,6 +9,10 @@ define([
 
         getAverageResidual: function() {
             return Average.averageResidual(this);
+        },
+
+        getAveragePupilPremiumResidual: function() {
+            return Average.averageResidualByCriteria(_.chain(this.models), 'pp');
         }
     });
 });
