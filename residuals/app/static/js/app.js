@@ -10,19 +10,16 @@ define([
     return {
         init: function() {
             var student1 = new StudentModel({
-                id:        1,
                 name:      'charles',
                 potential: 'a',
                 actual:    'b'
             }),
             student2 = new StudentModel({
-                id:        2,
                 name:      'michael',
                 potential: 'c',
                 actual:    'd'
             }),
             student3 = new StudentModel({
-                id:        3,
                 name:      'gob',
                 potential: 'a*',
                 actual:    'a'
@@ -34,7 +31,6 @@ define([
             var view = new StudentListView({collection: collection});
 
             collection.add(new StudentModel({
-                id:        4,
                 name:      'pop pop',
                 potential: 'e',
                 actual:    'c'

@@ -5,7 +5,7 @@ define([
 ], function(_, Backbone, Residual) {
     var StudentModel = Backbone.Model.extend({
         defaults: {
-            id: null,
+            name:      '',
             potential: '',
             actual:    '',
             residual:  0

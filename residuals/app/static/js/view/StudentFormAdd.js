@@ -5,14 +5,19 @@ function(Backbone, StudentModelFactory) {
         template: _.template($("#template-student-form-add").html()),
 
         initialize: function() {
-            $el = this.$el;
+            $el        = this.$el;
+            collection = this.collection;
             $el.on('submit', function(e) {
                 params = {}
                 _
                     .chain($el.find('form').serializeArray())
                     .map(function(item) {params[item.name] = item.value;});
 
-                 console.log(StudentModelFactory.createFromArray(params));
+                model = StudentModelFactory.createFromArray(params);
+
+                console.log(model);
+
+                collection.add(model);
 
                 return false;
             });
