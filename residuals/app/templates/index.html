@@ -21,7 +21,7 @@
                     <th>Potential grade</th>
                     <th>Actual grade</th>
                     <th>Residual</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody id="students-table-body">
@@ -33,17 +33,17 @@
     <!-- templates -->
     <script type="text/template" id="template-student-row">
         <td><%- name %></td>
-        <td><input type="checkbox" disabled="disabled" <% if(true === pp) { print('checked="checked"'); } %> /></td>
-        <td><input type="checkbox" disabled="disabled" <% if(true === gt) { print('checked="checked"'); } %> /></td>
-        <td><input type="checkbox" disabled="disabled" <% if(true === sen) { print('checked="checked"'); } %> /></td>
-        <td><input type="checkbox" disabled="disabled" <% if(true === bme) { print('checked="checked"'); } %> /></td>
-        <td><input type="checkbox" disabled="disabled" <% if(true === fsm) { print('checked="checked"'); } %> /></td>
+        <td><input type="checkbox" <% if(true === pp) { print('checked="checked"'); } %> onClick="return false;" /></td>
+        <td><input type="checkbox" <% if(true === gt) { print('checked="checked"'); } %> onClick="return false;" /></td>
+        <td><input type="checkbox" <% if(true === sen) { print('checked="checked"'); } %> onClick="return false;" /></td>
+        <td><input type="checkbox" <% if(true === bme) { print('checked="checked"'); } %> onClick="return false;" /></td>
+        <td><input type="checkbox" <% if(true === fsm) { print('checked="checked"'); } %> onClick="return false;" /></td>
         <td><strong><% print(potential.toUpperCase()) %></strong></td>
         <td><strong><% print(actual.toUpperCase()) %></strong></td>
         <td class="<%- residualCellClass %>">
             <%  residual > 0 ? print('+' + residual) : print(residual) %>
         </td>
-        <td></td>
+        <td class="student-row-delete-td"></td>
     </script>
 
     <script type="text/template" id="template-student-form-add">
@@ -100,6 +100,10 @@
             <dt>FSM residual:</dt>
                 <dd><%- averageFSMResidual %></dd>
         </dl>
+    </script>
+
+    <script type="text/template" id="template-student-delete">
+        <span class="btn btn-danger" data-cid="<%- cid %>">X</span>
     </script>
 
     <!-- this HAS to be last -->

@@ -4,6 +4,10 @@ define([
     "use strict";
 
     var averageResidual = function averageResidual(students) {
+        if(0 === students.size()) {
+            return 0;
+        }
+
         return students
             .pluck('residual')
             .reduce(function(memo, residual) {
@@ -15,6 +19,10 @@ define([
         var total,
             eligible = students
                 .filter(function(student) {return true === student.attributes[field]});
+
+        if(0 === eligible.size().value()) {
+            return 0;
+        }
 
         total = eligible
             .map(function(student) {return student.attributes.residual})

@@ -4,11 +4,11 @@ function(Backbone, StudentItemView) {
         el: "#students-table-body",
 
         initialize: function() {
-            this.listenTo(this.collection, "add", this.render);
+            this.listenTo(this.collection, "add remove", this.render);
         },
 
         renderItem: function(model) {
-            var itemView = new StudentItemView({model: model});
+            var itemView = new StudentItemView({model: model, collection: this.collection});
             itemView.render();
             this.$el.append(itemView.el);
         },

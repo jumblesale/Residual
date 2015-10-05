@@ -3,7 +3,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 app.config["CACHE_TYPE"] = "null"
 
-@app.route('/')
+@app.route('/residuals')
 def index():
     return render_template('index.html')
 
