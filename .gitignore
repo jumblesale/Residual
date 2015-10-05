@@ -3,3 +3,5 @@
 .vagrant
 venv/
 node_modules/
+releases/
+!releases/.gitkeep
