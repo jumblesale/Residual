@@ -22,6 +22,14 @@ function(Backbone, StudentModelFactory) {
                 model = StudentModelFactory.createFromArray(params);
 
                 collection.add(model);
+
+                // clear out the previous values
+                $el.find('input,select').not('input[type=submit]')
+                    .val('')
+                    .end()
+                .find('checkbox')
+                    .prop('checked', '')
+                    .end();
             });
         },
 
