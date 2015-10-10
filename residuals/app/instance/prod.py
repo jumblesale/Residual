@@ -1,3 +1,3 @@
-PORT    = 8080
-DEBUG   = False
+PORT    = 5000
+DEBUG   = True
 TESTING = False
