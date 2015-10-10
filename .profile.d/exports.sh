@@ -1,1 +1,1 @@
-FLASK_SETTINGS=settings/prod.cfg
+FLASK_SETTINGS=instance/prod.py
