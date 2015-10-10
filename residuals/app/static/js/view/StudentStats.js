@@ -2,7 +2,7 @@ define(['backbone', 'collection/Student'],
 function(Backbone, StudentCollection) {
     return Backbone.View.extend({
         el:      '#student-stats',
-        tagName: 'div',
+        tagName: 'tr',
         template: _.template($("#template-student-stats").html()),
 
         initialize: function() {

@@ -1,3 +1,11 @@
+.introductory-text {
+    text-align: center;
+}
+
+#students tr td {
+    vertical-align: middle;
+}
+
 #student-stats {
-    float: right;
+
 }

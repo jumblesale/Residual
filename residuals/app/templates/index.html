@@ -25,9 +25,16 @@
                 </tr>
             </thead>
             <tbody id="students-table-body">
+                <tr>
+                    <td colspan="10" class="introductory-text">whatever</td>
+                </tr>
             </tbody>
+            <tfoot id="student-stats">
+                <tr>
+                    <td colspan="10"></td>
+                </tr>
+            </tfoot>
         </table>
-        <div id="student-stats"></div>
     </div>
 
     <!-- templates -->
@@ -86,20 +93,18 @@
     </script>
 
     <script type="text/template" id="template-student-stats">
-        <dl class="dl-horizontal">
-            <dt>Residual:</dt>
-                <dd><%- averageResidual %></dd>
-            <dt>PP residual:</dt>
-                <dd><%- averagePupilPremiumResidual %></dd>
-            <dt>G/T residual:</dt>
-                <dd><%- averageGiftedTalentedResidual %></dd>
-            <dt>SEN residual:</dt>
-                <dd><%- averageSENResidual %></dd>
-            <dt>BME residual:</dt>
-                <dd><%- averageBMEResidual %></dd>
-            <dt>FSM residual:</dt>
-                <dd><%- averageFSMResidual %></dd>
-        </dl>
+        <tr>
+            <td><strong>Averages:</strong></td>
+            <td><%- averagePupilPremiumResidual %></td>
+            <td><%- averageGiftedTalentedResidual %></td>
+            <td><%- averageSENResidual %></td>
+            <td><%- averageBMEResidual %></td>
+            <td><%- averageFSMResidual %></td>
+            <td><!-- potential --></td>
+            <td><!-- actual --></td>
+            <td><%- averageResidual %></td>
+            <td></td>
+        </tr>
     </script>
 
     <script type="text/template" id="template-student-delete">
