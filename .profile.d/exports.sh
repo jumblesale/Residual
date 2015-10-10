@@ -1,1 +1,1 @@
-export FLASK_SETTINGS=settings/prod.cfg
+FLASK_SETTINGS=settings/prod.cfg
