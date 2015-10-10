@@ -4,14 +4,6 @@ function(Backbone, DeleteStudentView) {
         tagName: "tr",
         template: _.template($("#template-student-row").html()),
 
-        events: {
-            "click": "clicked"
-        },
-
-        clicked: function(e) {
-            console.log(e);
-        },
-
         render: function() {
             var cid = this.model.cid,
                 deleteButton = new DeleteStudentView({
@@ -35,12 +27,35 @@ function(Backbone, DeleteStudentView) {
                 )
             );
 
+            this.$el.find('input').on('change', $.proxy(this.inputChanged, this));
+
             this.$el.hide();
-            this.$el.fadeIn('slow')
+            this.$el.fadeIn('slow');
 
             this.$el.find('.student-row-delete-td').html(deleteButton);
 
             return this;
+        },
+
+        inputChanged: function(e) {
+            var target  = e.target,
+                $target = $(e.target),
+                type    = target.type,
+                value   = $(target).val(),
+                attr    = $(e.target).attr('data-student-attr');
+
+            if('checkbox' === type) {
+                value = target.checked;
+            } else {
+                value = $target.val();
+            }
+
+            this.updateModel(attr, value);
+        },
+
+        updateModel: function(attr, value) {
+            console.log('updating ' + attr + ' to ' + value);
+            this.model.set(attr, value);
         }
     });
 });

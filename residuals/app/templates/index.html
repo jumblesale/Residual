@@ -40,11 +40,11 @@
     <!-- templates -->
     <script type="text/template" id="template-student-row">
         <td><%- name %></td>
-        <td><input type="checkbox" <% if(true === pp) { print('checked="checked"'); } %> onClick="return false;" /></td>
-        <td><input type="checkbox" <% if(true === gt) { print('checked="checked"'); } %> onClick="return false;" /></td>
-        <td><input type="checkbox" <% if(true === sen) { print('checked="checked"'); } %> onClick="return false;" /></td>
-        <td><input type="checkbox" <% if(true === bme) { print('checked="checked"'); } %> onClick="return false;" /></td>
-        <td><input type="checkbox" <% if(true === fsm) { print('checked="checked"'); } %> onClick="return false;" /></td>
+        <td><input type="checkbox" id="<%- cid %>-pp" data-student-attr="pp" <% if(true === pp) { print('checked="checked"'); } %>" /></td>
+        <td><input type="checkbox" id="<%- cid %>-pp" data-student-attr="gt"  <% if(true === gt) { print('checked="checked"'); } %>" /></td>
+        <td><input type="checkbox" id="<%- cid %>-pp" data-student-attr="sen"  <% if(true === sen) { print('checked="checked"'); } %>" /></td>
+        <td><input type="checkbox" id="<%- cid %>-pp" data-student-attr="bme"  <% if(true === bme) { print('checked="checked"'); } %>" /></td>
+        <td><input type="checkbox" id="<%- cid %>-pp" data-student-attr="fsm"  <% if(true === fsm) { print('checked="checked"'); } %>" /></td>
         <td><strong><% print(potential.toUpperCase()) %></strong></td>
         <td><strong><% print(actual.toUpperCase()) %></strong></td>
         <td class="<%- residualCellClass %>">
