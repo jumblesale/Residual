@@ -1,9 +1,0 @@
-{
-  "name": "residuals",
-  "author": "jumblesale <rob@robsollars.co.uk>",
-  "devDependencies": {
-    "mocha": "2.3.x",
-    "requirejs": "2.1.x"
-  },
-  "engine": "node >= 0.12.7"
-}
