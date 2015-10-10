@@ -84,5 +84,7 @@ Vagrant.configure(2) do |config|
     sudo easy_install pip
     sudo pip install virtualenv
     virtualenv /Residuals/venv --no-site-packages
+
+    http://studenttoolk.it/residuals
   SHELL
 end
