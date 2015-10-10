@@ -24,12 +24,8 @@ function(Backbone, StudentModelFactory) {
                 collection.add(model);
 
                 // clear out the previous values
-                $el.find('input').not('input[type=submit]')
-                    .val('')
-                    .end()
-                .find('checkbox')
-                    .prop('checked', '')
-                    .end();
+                $el.find('input').not('input[type=submit],input[type=checkbox]').val('');
+                $el.find(':checkbox').attr('checked', false);
             });
         },
 
