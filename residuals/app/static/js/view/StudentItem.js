@@ -35,6 +35,9 @@ function(Backbone, DeleteStudentView) {
                 )
             );
 
+            this.$el.hide();
+            this.$el.fadeIn('slow')
+
             this.$el.find('.student-row-delete-td').html(deleteButton);
 
             return this;

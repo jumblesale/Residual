@@ -24,7 +24,7 @@ function(Backbone, StudentModelFactory) {
                 collection.add(model);
 
                 // clear out the previous values
-                $el.find('input,select').not('input[type=submit]')
+                $el.find('input').not('input[type=submit]')
                     .val('')
                     .end()
                 .find('checkbox')
