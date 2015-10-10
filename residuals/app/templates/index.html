@@ -25,9 +25,16 @@
                 </tr>
             </thead>
             <tbody id="students-table-body">
+                <tr>
+                    <td colspan="10" class="introductory-text">To get started, add a student above!</td>
+                </tr>
             </tbody>
+            <tfoot id="student-stats">
+                <tr>
+                    <td colspan="10"></td>
+                </tr>
+            </tfoot>
         </table>
-        <div id="student-stats"></div>
     </div>
 
     <!-- templates -->
@@ -41,17 +48,18 @@
         <td><strong><% print(potential.toUpperCase()) %></strong></td>
         <td><strong><% print(actual.toUpperCase()) %></strong></td>
         <td class="<%- residualCellClass %>">
-            <%  residual > 0 ? print('+' + residual) : print(residual) %>
+            <strong><%  residual > 0 ? print('+' + residual) : print(residual) %></strong>
         </td>
         <td class="student-row-delete-td"></td>
     </script>
 
     <script type="text/template" id="template-student-form-add">
         <h3>Add a student</h3>
-        <form class="form-inline">
+        <form class="form">
             <div class="form-group">
                 <input type="text" name="name" placeholder="Student name" class="form-control" />
-                <select name="potential" class="form-control">
+                <label for="potential">Potential grade:</label>
+                <select name="potential" class="form-control" id="potential">
                     <option value="a*">A*</option>
                     <option value="a">A</option>
                     <option value="b">B</option>
@@ -59,7 +67,8 @@
                     <option value="d">D</option>
                     <option value="e">E</option>
                 </select>
-                <select name="actual" class="form-control">
+                <label for="actual">Actual grade:</label>
+                <select name="actual" class="form-control" id="actual">
                     <option value="a*">A*</option>
                     <option value="a">A</option>
                     <option value="b">B</option>
@@ -80,26 +89,25 @@
                 <label for="bme">BME?</label>
                 <input type="checkbox" name="freeSchoolMeals" id="fsm" value="true">
                 <label for="fsm">FSM?</label>
+                <br />
                 <input type="submit" value="Create" id="student-create-submit" class="btn btn-success" />
             </div>
         </form>
     </script>
 
     <script type="text/template" id="template-student-stats">
-        <dl class="dl-horizontal">
-            <dt>Residual:</dt>
-                <dd><%- averageResidual %></dd>
-            <dt>PP residual:</dt>
-                <dd><%- averagePupilPremiumResidual %></dd>
-            <dt>G/T residual:</dt>
-                <dd><%- averageGiftedTalentedResidual %></dd>
-            <dt>SEN residual:</dt>
-                <dd><%- averageSENResidual %></dd>
-            <dt>BME residual:</dt>
-                <dd><%- averageBMEResidual %></dd>
-            <dt>FSM residual:</dt>
-                <dd><%- averageFSMResidual %></dd>
-        </dl>
+        <tr>
+            <td class="title"><strong>Averages:</strong></td>
+            <td><%- averagePupilPremiumResidual %></td>
+            <td><%- averageGiftedTalentedResidual %></td>
+            <td><%- averageSENResidual %></td>
+            <td><%- averageBMEResidual %></td>
+            <td><%- averageFSMResidual %></td>
+            <td><!-- potential --></td>
+            <td><!-- actual --></td>
+            <td><%- averageResidual %></td>
+            <td></td>
+        </tr>
     </script>
 
     <script type="text/template" id="template-student-delete">
