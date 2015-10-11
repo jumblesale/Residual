@@ -40,13 +40,13 @@
     <!-- templates -->
     <script type="text/template" id="template-student-row">
         <td><%- name %></td>
-        <td><input type="checkbox" <% if(true === pp) { print('checked="checked"'); } %> onClick="return false;" /></td>
-        <td><input type="checkbox" <% if(true === gt) { print('checked="checked"'); } %> onClick="return false;" /></td>
-        <td><input type="checkbox" <% if(true === sen) { print('checked="checked"'); } %> onClick="return false;" /></td>
-        <td><input type="checkbox" <% if(true === bme) { print('checked="checked"'); } %> onClick="return false;" /></td>
-        <td><input type="checkbox" <% if(true === fsm) { print('checked="checked"'); } %> onClick="return false;" /></td>
-        <td><strong><% print(potential.toUpperCase()) %></strong></td>
-        <td><strong><% print(actual.toUpperCase()) %></strong></td>
+        <td><input type="checkbox" id="<%- cid %>-pp" data-student-attr="pp" <% if(true === pp) { print('checked="checked"'); } %>" /></td>
+        <td><input type="checkbox" id="<%- cid %>-pp" data-student-attr="gt"  <% if(true === gt) { print('checked="checked"'); } %>" /></td>
+        <td><input type="checkbox" id="<%- cid %>-pp" data-student-attr="sen"  <% if(true === sen) { print('checked="checked"'); } %>" /></td>
+        <td><input type="checkbox" id="<%- cid %>-pp" data-student-attr="bme"  <% if(true === bme) { print('checked="checked"'); } %>" /></td>
+        <td><input type="checkbox" id="<%- cid %>-pp" data-student-attr="fsm"  <% if(true === fsm) { print('checked="checked"'); } %>" /></td>
+        <td class="potential-grade"></td>
+        <td class="actual-grade"></td>
         <td class="<%- residualCellClass %>">
             <strong><%  residual > 0 ? print('+' + residual) : print(residual) %></strong>
         </td>
@@ -58,8 +58,8 @@
         <form class="form">
             <div class="form-group">
                 <input type="text" name="name" placeholder="Student name" class="form-control" />
-                <label for="potential">Potential grade:</label>
-                <select name="potential" class="form-control" id="potential">
+                <label for="student-form-add-potential">Potential grade:</label>
+                <select name="potential" class="form-control" id="student-form-add-potential">
                     <option value="a*">A*</option>
                     <option value="a">A</option>
                     <option value="b">B</option>
@@ -67,8 +67,8 @@
                     <option value="d">D</option>
                     <option value="e">E</option>
                 </select>
-                <label for="actual">Actual grade:</label>
-                <select name="actual" class="form-control" id="actual">
+                <label for="student-form-add-actual">Actual grade:</label>
+                <select name="actual" class="form-control" id="student-form-add-actual">
                     <option value="a*">A*</option>
                     <option value="a">A</option>
                     <option value="b">B</option>
@@ -79,16 +79,16 @@
                 </select>
             </div>
             <div class="form-group">
-                <input type="checkbox" name="pupilPremium" id="pupilPremium" value="true">
-                <label for="pupilPremium">Pupil premium?</label>
-                <input type="checkbox" name="giftedTalented" id="giftedTalented" value="true">
-                <label for="giftedTalented">Gifted / talented?</label>
-                <input type="checkbox" name="sen" id="sen" value="true">
-                <label for="sen">SEN?</label>
-                <input type="checkbox" name="bme" id="bme" value="true">
-                <label for="bme">BME?</label>
-                <input type="checkbox" name="freeSchoolMeals" id="fsm" value="true">
-                <label for="fsm">FSM?</label>
+                <input type="checkbox" name="pupilPremium" id="student-form-add-pupilPremium" value="true">
+                <label for="student-form-add-pupilPremium">Pupil premium?</label>
+                <input type="checkbox" name="giftedTalented" id="student-form-add-giftedTalented" value="true">
+                <label for="student-form-add-giftedTalented">Gifted / talented?</label>
+                <input type="checkbox" name="sen" id="student-form-add-sen" value="true">
+                <label for="student-form-add-sen">SEN?</label>
+                <input type="checkbox" name="bme" id="student-form-add-bme" value="true">
+                <label for="student-form-add-bme">BME?</label>
+                <input type="checkbox" name="freeSchoolMeals" id="student-form-add-fsm" value="true">
+                <label for="student-form-add-fsm">FSM?</label>
                 <br />
                 <input type="submit" value="Create" id="student-create-submit" class="btn btn-success" />
             </div>
@@ -108,6 +108,20 @@
             <td><%- averageResidual %></td>
             <td></td>
         </tr>
+    </script>
+
+    <script type="text/template" id="student-grade-options">
+        <select name="actual" class="form-control" data-student-attr="<%- attr %>">
+        <%
+            _(grades).each(function(grade) {
+                var gradeValue   = grade.toLowerCase(),
+                    gradeDisplay = grade.toUpperCase(),
+                    selectedOpt  = (selected === gradeValue ? true : false),
+                    selectedHtml = (true === selectedOpt ? 'selected="selected"' : '');
+                print('<option value="' + gradeValue + '"' + selectedHtml + '>' + gradeDisplay + '</option>');
+            });
+        %>
+        </select>
     </script>
 
     <script type="text/template" id="template-student-delete">

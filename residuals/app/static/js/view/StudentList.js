@@ -4,7 +4,7 @@ function(Backbone, StudentItemView) {
         el: "#students-table-body",
 
         initialize: function() {
-            this.listenTo(this.collection, "add remove", this.render);
+            this.listenTo(this.collection, "add remove change", this.render);
         },
 
         renderItem: function(model) {

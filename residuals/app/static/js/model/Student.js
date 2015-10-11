@@ -17,6 +17,12 @@ define([
         },
 
         initialize: function() {
+            this.update();
+
+            this.listenTo(this, 'change', $.proxy(this.update, this));
+        },
+
+        update: function() {
             var potential = this.attributes.potential,
                 actual    = this.attributes.actual;
 
@@ -24,6 +30,10 @@ define([
                 potential, actual
             );
         }
+    }, {
+        // grade options as static properties
+        potentialGrades: ['a*', 'a', 'b', 'c', 'd', 'e'],
+        actualGrades:    ['a*', 'a', 'b', 'c', 'd', 'e', 'u']
     });
 
     return StudentModel;
