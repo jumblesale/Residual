@@ -4,18 +4,27 @@ define([
     'collection/Student',
     'view/StudentList',
     'view/StudentFormAdd',
+    'view/StudentFormBulkAdd',
     'view/StudentStats',
     'view/StudentExport',
-], function(_, Backbone, StudentCollection, StudentListView, StudentFormAdd, StudentStatsView, StudentExportView) {
+], function(_, Backbone,
+    StudentCollection,
+    StudentListView,
+    StudentFormAdd,
+    StudentFormBulkAdd,
+    StudentStatsView,
+    StudentExportView
+) {
     return {
         init: function() {
-            var collection = new StudentCollection(),
-                statsView  = new StudentStatsView({collection: collection}),
-                tableView  = new StudentListView({collection: collection}),
-                formView   = new StudentFormAdd({collection: collection}),
-                exportView = new StudentExportView({collection: collection});
+            var collection      = new StudentCollection(),
+                statsView       = new StudentStatsView({collection: collection}),
+                tableView       = new StudentListView({collection: collection}),
+             // addFormView     = new StudentFormAdd({collection: collection}),
+                bulkAddFormView = new StudentFormBulkAdd({collection: collection}),
+                exportView      = new StudentExportView({collection: collection});
 
-            formView.render();
+            // addFormView.render();
 
             statsView.render();
         }

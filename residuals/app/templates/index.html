@@ -7,8 +7,9 @@
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div id="student-form-add" class="well"></div>
     <div class="container">
+        <h1>Student residuals</h1>
+        <div id="student-form-bulk-add"></div>
         <table id="students" class="table table-striped">
             <thead>
                 <tr>
@@ -26,7 +27,10 @@
             </thead>
             <tbody id="students-table-body">
                 <tr>
-                    <td colspan="10" class="introductory-text">To get started, add a student above!</td>
+                    <td colspan="10" class="introductory-text">
+                        To get started, add student names into the text box above!<br />
+                        Separate each name with a new line.
+                    </td>
                 </tr>
             </tbody>
             <tfoot id="student-stats">
@@ -133,6 +137,16 @@
         <form id="students-export" action="students/export" method="POST">
             <input id="students-export-data" type="hidden" name="data" value="" />
             <span class="btn btn-primary">Export results (.csv)</span>
+        </form>
+    </script>
+
+    <script type="text/template" id="template-students-bulk-add">
+        <h3>Add students</h3>
+        <form id="students-bulk-add" class="form">
+            <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="Add student names here" id="students-bulk-add-input"></textarea>
+                <input type="submit" value="Add students" id="student-bulk-add-submit" class="btn btn-success" />
+            </div>
         </form>
     </script>
 

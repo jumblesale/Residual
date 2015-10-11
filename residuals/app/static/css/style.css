@@ -16,3 +16,11 @@
 #student-stats {}
 #student-stats tr td {text-align: center;}
 #student-stats tr td.title {text-align: right;}
+
+#student-form-bulk-add {
+    width: 400px;
+}
+
+#student-form-bulk-add textarea {
+    margin: 8px 0;
+}
