@@ -3,8 +3,11 @@ function(Backbone, DeleteStudentView) {
     return Backbone.View.extend({
         tagName: "tr",
         template: _.template($("#template-student-row").html()),
+        gradeTemplate: _
+            .template($("#student-grade-options").html()),
 
         render: function() {
+            console.log('rendering');
             var cid = this.model.cid,
                 deleteButton = new DeleteStudentView({
                     model:      this.model,
@@ -27,10 +30,17 @@ function(Backbone, DeleteStudentView) {
                 )
             );
 
-            this.$el.find('input').on('change', $.proxy(this.inputChanged, this));
+            this.$el.find('.potential-grade').html(this.gradeTemplate({
+                attr:   'potential',
+                grades: this.model.potentialGrades
+            }));
+            this.$el.find('.actual-grade').html(this.gradeTemplate({
+                attr:   'actual',
+                grades: this.model.actualGrades
+            }));
 
-            this.$el.hide();
-            this.$el.fadeIn('slow');
+            this.$el.find('select').on('change', $.proxy(this.inputChanged, this));
+            this.$el.find('input').on('change', $.proxy(this.inputChanged, this));
 
             this.$el.find('.student-row-delete-td').html(deleteButton);
 
@@ -38,6 +48,7 @@ function(Backbone, DeleteStudentView) {
         },
 
         inputChanged: function(e) {
+            console.log(e);
             var target  = e.target,
                 $target = $(e.target),
                 type    = target.type,
@@ -54,7 +65,6 @@ function(Backbone, DeleteStudentView) {
         },
 
         updateModel: function(attr, value) {
-            console.log('updating ' + attr + ' to ' + value);
             this.model.set(attr, value);
         }
     });

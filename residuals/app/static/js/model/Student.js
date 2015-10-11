@@ -17,6 +17,12 @@ define([
         },
 
         initialize: function() {
+            this.update();
+
+            this.listenTo(this, 'change', $.proxy(this.update, this));
+        },
+
+        update: function() {
             var potential = this.attributes.potential,
                 actual    = this.attributes.actual;
 
