@@ -6,8 +6,8 @@ define([
     var StudentModel = Backbone.Model.extend({
         defaults: {
             name:      '',
-            potential: '',
-            actual:    '',
+            potential: 'a*',
+            actual:    'a*',
             pp:        false,
             gt:        false,
             sen:       false,
