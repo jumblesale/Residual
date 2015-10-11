@@ -8,7 +8,7 @@ define([
         model: StudentModel,
 
         export: function() {
-            console.log(JSON.stringify(this.toJSON()));
+            return this.toJSON();
         },
 
         getAverageResidual: function() {

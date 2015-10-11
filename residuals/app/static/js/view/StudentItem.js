@@ -41,8 +41,6 @@ function(Backbone, DeleteStudentView) {
 
             this.$el.find('.student-row-delete-td').html(deleteButton);
 
-            console.log(this.model);
-
             return this;
         },
 

@@ -1,0 +1,3 @@
+"Student name";"Potential grade";"Actual grade";"Residual grade";"Pupil premium";"Gifted/talented";"SEN";"BME";"FSM";
+{% for row in data %}"{{ row.name }}";"{{ row.potential }}";"{{row.actual}}";"{{row.residual}}";"{{row.pp}}";"{{row.gt}}";"{{row.sen}}";"{{row.bme}}";"{{row.fsm}}"
+{% endfor %}

@@ -1,7 +1,7 @@
 define(['backbone'], function(Backbone) {
     return Backbone.View.extend({
         template: _.template($("#template-export").html()),
-        el: "#student-export-button",
+        el: "#students-export-container",
 
         initialize: function() {
             this.render();
@@ -12,7 +12,13 @@ define(['backbone'], function(Backbone) {
         },
 
         clicked: function(e) {
-            this.collection.export();
+            var data = this.collection.export();
+
+            console.log(data);
+
+            $('#students-export-data').val(JSON.stringify(data));
+
+            $('#students-export').submit();
         },
 
         render: function() {
