@@ -7,6 +7,10 @@ define([
     return StudentCollection = Backbone.Collection.extend({
         model: StudentModel,
 
+        export: function() {
+            console.log(JSON.stringify(this.toJSON()));
+        },
+
         getAverageResidual: function() {
             return Average.averageResidual(this).toPrecision(3);
         },
@@ -34,5 +38,7 @@ define([
         getAverageFSMResidual: function() {
             return this.getAverageResidualByCriteria('fsm');
         }
+    }, {
+        exportUrl: "students/export"
     });
 });

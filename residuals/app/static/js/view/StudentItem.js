@@ -11,23 +11,18 @@ function(Backbone, DeleteStudentView) {
                 deleteButton = new DeleteStudentView({
                     model:      this.model,
                     collection: this.collection
-                }).$el;
+                }).$el,
+                attributes = {};
 
-            this.$el.html(
-                this.template(
-                    _.extend(
-                        this.model.attributes,
-                        {
-                            cid: cid,
-                            residualCellClass: function(residual) {
-                                if(residual < 0) {return 'danger';}
-                                if(residual > 0) {return 'success';}
-                                return 'warning';
-                            }(this.model.get('residual'))
-                        }
-                    )
-                )
-            );
+            attributes.model = this.model.attributes;
+            attributes.cid = cid;
+            attributes.residualCellClass = function(residual) {
+                if(residual < 0) {return 'danger';}
+                if(residual > 0) {return 'success';}
+                return 'warning';
+            }(this.model.get('residual'));
+
+            this.$el.html(this.template(attributes));
 
             this.$el.find('.potential-grade').html(this.gradeTemplate({
                 attr:     'potential',
@@ -45,6 +40,8 @@ function(Backbone, DeleteStudentView) {
             this.$el.find('input').on('change', $.proxy(this.inputChanged, this));
 
             this.$el.find('.student-row-delete-td').html(deleteButton);
+
+            console.log(this.model);
 
             return this;
         },
