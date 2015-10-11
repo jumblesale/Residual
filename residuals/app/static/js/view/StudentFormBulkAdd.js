@@ -15,9 +15,11 @@ function(Backbone, StudentModel) {
                 students = $studentInput.val().split("\n");
                 $studentInput.val("");
 
-                _(students).each(function(name) {
-                    this.collection.add(new StudentModel({name: name}));
-                });
+                _(students)
+                    .filter(function(name) {return name !== ""})
+                    .map(function(name) {
+                        this.collection.add(new StudentModel({name: name}));
+                    });
             });
 
             this.render();
