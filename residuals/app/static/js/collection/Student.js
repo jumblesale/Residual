@@ -7,6 +7,31 @@ define([
     return StudentCollection = Backbone.Collection.extend({
         model: StudentModel,
 
+        initialize: function() {
+            this.averages = {};
+            this.update();
+            this.listenTo(this, 'add remove change', this.update)
+        },
+
+        export: function() {
+            return {
+                students: this.toJSON(),
+                averages: this.averages
+            };
+        },
+
+        update: function() {
+            var fields = ['pp', 'gt', 'sen', 'bme', 'fsm', ];
+
+            _(fields).each(function(field) {
+                this.averages[field] = this.getAverageResidualByCriteria(field);
+            }, this);
+
+            this.averages.residual = Average.averageResidual(this).toPrecision(3);
+
+            return this.averages;
+        },
+
         getAverageResidual: function() {
             return Average.averageResidual(this).toPrecision(3);
         },
@@ -34,5 +59,7 @@ define([
         getAverageFSMResidual: function() {
             return this.getAverageResidualByCriteria('fsm');
         }
+    }, {
+        exportUrl: "students/export"
     });
 });
