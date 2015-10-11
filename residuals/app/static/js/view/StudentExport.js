@@ -14,8 +14,6 @@ define(['backbone'], function(Backbone) {
         clicked: function(e) {
             var data = this.collection.export();
 
-            console.log(data);
-
             $('#students-export-data').val(JSON.stringify(data));
 
             $('#students-export').submit();
