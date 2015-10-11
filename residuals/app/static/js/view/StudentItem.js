@@ -7,7 +7,6 @@ function(Backbone, DeleteStudentView) {
             .template($("#student-grade-options").html()),
 
         render: function() {
-            console.log('rendering');
             var cid = this.model.cid,
                 deleteButton = new DeleteStudentView({
                     model:      this.model,
@@ -31,12 +30,15 @@ function(Backbone, DeleteStudentView) {
             );
 
             this.$el.find('.potential-grade').html(this.gradeTemplate({
-                attr:   'potential',
-                grades: this.model.potentialGrades
+                attr:     'potential',
+                grades:   this.model.constructor.potentialGrades,
+                selected: this.model.attributes.potential
             }));
+
             this.$el.find('.actual-grade').html(this.gradeTemplate({
-                attr:   'actual',
-                grades: this.model.actualGrades
+                attr:    'actual',
+                grades:  this.model.constructor.actualGrades,
+                selected: this.model.attributes.actual
             }));
 
             this.$el.find('select').on('change', $.proxy(this.inputChanged, this));
@@ -48,7 +50,6 @@ function(Backbone, DeleteStudentView) {
         },
 
         inputChanged: function(e) {
-            console.log(e);
             var target  = e.target,
                 $target = $(e.target),
                 type    = target.type,

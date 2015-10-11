@@ -112,13 +112,15 @@
 
     <script type="text/template" id="student-grade-options">
         <select name="actual" class="form-control" data-student-attr="<%- attr %>">
-            <option value="a*">A*</option>
-            <option value="a">A</option>
-            <option value="b">B</option>
-            <option value="c">C</option>
-            <option value="d">D</option>
-            <option value="e">E</option>
-            <option value="u">U</option>
+        <%
+            _(grades).each(function(grade) {
+                var gradeValue   = grade.toLowerCase(),
+                    gradeDisplay = grade.toUpperCase(),
+                    selectedOpt  = (selected === gradeValue ? true : false),
+                    selectedHtml = (true === selectedOpt ? 'selected="selected"' : '');
+                print('<option value="' + gradeValue + '"' + selectedHtml + '>' + gradeDisplay + '</option>');
+            });
+        %>
         </select>
     </script>
 

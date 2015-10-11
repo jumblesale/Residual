@@ -30,6 +30,10 @@ define([
                 potential, actual
             );
         }
+    }, {
+        // grade options as static properties
+        potentialGrades: ['a*', 'a', 'b', 'c', 'd', 'e'],
+        actualGrades:    ['a*', 'a', 'b', 'c', 'd', 'e', 'u']
     });
 
     return StudentModel;
