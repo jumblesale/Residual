@@ -1,13 +1,11 @@
 define([
     'underscore',
     'backbone',
-    'average',
-    'model/Student',
     'collection/Student',
     'view/StudentList',
     'view/StudentFormAdd',
     'view/StudentStats',
-], function(_, Backbone, Average, StudentModel, StudentCollection, StudentListView, StudentFormAdd, StudentStatsView) {
+], function(_, Backbone, StudentCollection, StudentListView, StudentFormAdd, StudentStatsView) {
     return {
         init: function() {
             var collection = new StudentCollection(),
